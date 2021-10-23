@@ -1,7 +1,10 @@
 package cmd
 
 import (
+	"kalle83/feedback-roulette/app/controller"
 	"kalle83/feedback-roulette/app/handler"
+	"kalle83/feedback-roulette/app/repository"
+	"kalle83/feedback-roulette/app/service"
 
 	"github.com/spf13/cobra"
 )
@@ -21,6 +24,11 @@ func init() {
 
 func Serve() {
 
-	handler.Start()
+	questionRepository := repository.NewFileQuestionRepository("questions.json")
+	questionService := service.NewQuestionService(questionRepository)
+	questionController := controller.NewQuestionController(questionService)
+	server := handler.NewServer(81, questionController)
+
+	server.Start()
 
 }

@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	log "github.com/sirupsen/logrus"
 )
 
 // https://www.agiratech.com/building-restful-api-service-golang-using-gin-gonic
@@ -18,8 +19,20 @@ var (
 	errDeletionFailed  = errors.New("Error in the user deletion")
 )
 
+type questionController struct {
+	QuestionService model.QuestionService
+}
+
+func NewQuestionController(questionService model.QuestionService) model.QuestionController {
+	return &questionController{QuestionService: questionService}
+}
+
 // GetAllUser Endpoint
-func GetAllQuestions(c *gin.Context) {
-	questions := []model.Question{}
-	c.JSON(http.StatusOK, gin.H{"status": "success", "question": &questions})
+func (qc *questionController) GetAllQuestions(c *gin.Context) {
+	questions, err := qc.QuestionService.FindAll()
+	if err != nil {
+		log.Error(err)
+		c.AbortWithError(500, err)
+	}
+	c.JSON(http.StatusOK, questions)
 }
