@@ -4,6 +4,7 @@ import (
 	"errors"
 	"kalle83/feedback-roulette/app/model"
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
@@ -34,5 +35,41 @@ func (qc *questionController) GetAllQuestions(c *gin.Context) {
 		log.Error(err)
 		c.AbortWithError(500, err)
 	}
-	c.JSON(http.StatusOK, questions)
+	c.IndentedJSON(http.StatusOK, questions)
+}
+
+func (qc *questionController) CreateQuestion(c *gin.Context) {
+
+	var newQuestion model.Question
+
+	if err := c.BindJSON(&newQuestion); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	newQuestion, err := qc.QuestionService.Create(newQuestion.Text)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	c.IndentedJSON(http.StatusCreated, newQuestion)
+}
+
+func (qc *questionController) DeleteQuestion(c *gin.Context) {
+
+	id := c.Param("id")
+
+	int_id, err := strconv.ParseInt(id, 10, 64)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid ID"})
+		return
+	}
+
+	if err := qc.QuestionService.DeleteById(int_id); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.Status(http.StatusNoContent)
+
 }

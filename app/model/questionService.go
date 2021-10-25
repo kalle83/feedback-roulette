@@ -6,4 +6,5 @@ type QuestionService interface {
 	Create(questionText string) (Question, error)
 	Update(question *Question) error
 	Delete(question *Question) error
+	DeleteById(id int64) error
 }

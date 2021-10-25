@@ -1,46 +1,26 @@
 [
 	{
+		"id": 1,
+		"Text": "Das hat mir nicht gefallen!"
+	},
+	{
+		"id": 2,
+		"Text": "Das kam zu kurz!"
+	},
+	{
 		"id": 3,
-		"text": "Question AW"
+		"Text": "Das könnte man besser machen!"
 	},
 	{
 		"id": 4,
-		"text": "Question AA"
+		"Text": "Das war super!"
 	},
 	{
-		"id": 7,
-		"text": "Question AC"
+		"id": 5,
+		"Text": "Das nehme ich mit!"
 	},
 	{
-		"id": 8,
-		"text": "Question AB"
-	},
-	{
-		"id": 9,
-		"text": "myNewQuestion"
-	},
-	{
-		"id": 10,
-		"text": "myNewQuestion"
-	},
-	{
-		"id": 33,
-		"text": "myNewQuestion"
-	},
-	{
-		"id": 45,
-		"text": "Question AC"
-	},
-	{
-		"id": 46,
-		"text": "myNewQuestion"
-	},
-	{
-		"id": 47,
-		"text": "My new Feedback Question"
-	},
-	{
-		"id": 49,
-		"text": "myNewQuestion"
+		"id": 6,
+		"Text": "Das wünsche ich mir für die Zukunft"
 	}
 ]

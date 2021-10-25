@@ -27,7 +27,7 @@ func Serve() {
 	questionRepository := repository.NewFileQuestionRepository("questions.json")
 	questionService := service.NewQuestionService(questionRepository)
 	questionController := controller.NewQuestionController(questionService)
-	server := handler.NewServer(81, questionController)
+	server := handler.NewServer(80, questionController)
 
 	server.Start()
 

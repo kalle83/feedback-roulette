@@ -2,6 +2,7 @@ package service
 
 import (
 	"errors"
+	"kalle83/feedback-roulette/app"
 	"kalle83/feedback-roulette/app/model"
 
 	log "github.com/sirupsen/logrus"
@@ -45,6 +46,10 @@ func (qs *questionService) FindById(id int64) (*model.Question, error) {
 
 func (qs *questionService) Create(questionText string) (model.Question, error) {
 
+	if len(questionText) == 0 {
+		return model.Question{}, app.ErrEmptyQuestionText
+	}
+
 	question, err := qs.repo.Save(&model.Question{Text: questionText})
 	if err != nil {
 		log.Error(err)
@@ -67,6 +72,19 @@ func (qs *questionService) Delete(question *model.Question) error {
 
 	err := qs.repo.Delete(question)
 	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (qs *questionService) DeleteById(id int64) error {
+
+	question, err := qs.FindById(id)
+	if err != nil {
+		return err
+	}
+	if err := qs.Delete(question); err == nil {
 		return err
 	}
 
