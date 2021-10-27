@@ -5,6 +5,7 @@ go 1.17
 require (
 	github.com/fatih/color v1.7.0
 	github.com/gin-contrib/cors v1.3.1
+	github.com/gin-contrib/static v0.0.1
 	github.com/gin-gonic/gin v1.7.4
 	github.com/sirupsen/logrus v1.8.1
 	github.com/spf13/cobra v1.2.1

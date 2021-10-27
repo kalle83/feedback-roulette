@@ -3,10 +3,10 @@ package handler
 import (
 	"fmt"
 	"kalle83/feedback-roulette/app/model"
-	"kalle83/feedback-roulette/app/utility"
 	"net/http"
 
 	"github.com/gin-contrib/cors"
+	"github.com/gin-contrib/static"
 	"github.com/gin-gonic/gin"
 )
 
@@ -34,27 +34,31 @@ func (s *server) Start() {
 		c.String(200, "healthy: true")
 	})
 
-	router.LoadHTMLFiles("template/index.html")
+	// router.LoadHTMLFiles("frontend/index.html")
 
-	router.GET("/", func(c *gin.Context) {
+	router.Use(static.Serve("/", static.LocalFile("./frontend/dist", false)))
+	// router.StaticFS("/more_static", http.Dir("my_file_system"))
+	// router.StaticFile("/favicon.ico", "./resources/favicon.ico")
 
-		question := utility.GetRandomQuestion(false)
+	// router.GET("/", func(c *gin.Context) {
 
-		c.HTML(
-			// Set the HTTP status to 200 (OK)
-			http.StatusOK,
-			// Use the index.html template
-			"index.html",
-			// Pass the data that the page uses (in this case, 'title')
-			gin.H{
-				"question": question,
-			},
-		)
+	// 	question := utility.GetRandomQuestion(false)
 
-		// response := fmt.Sprintf("")
+	// 	c.HTML(
+	// 		// Set the HTTP status to 200 (OK)
+	// 		http.StatusOK,
+	// 		// Use the index.html template
+	// 		"index.html",
+	// 		// Pass the data that the page uses (in this case, 'title')
+	// 		gin.H{
+	// 			"question": question,
+	// 		},
+	// 	)
 
-		// c.String(http.StatusOK, question)
-	})
+	// 	// response := fmt.Sprintf("")
+
+	// 	// c.String(http.StatusOK, question)
+	// })
 
 	v1 := router.Group("/api/v1")
 	{
