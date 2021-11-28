@@ -34,32 +34,7 @@ func (s *server) Start() {
 		c.String(200, "healthy: true")
 	})
 
-	// router.LoadHTMLFiles("frontend/index.html")
-
-	router.Use(static.Serve("/", static.LocalFile("./frontend/dist", false)))
-	// router.StaticFS("/more_static", http.Dir("my_file_system"))
-	// router.StaticFile("/favicon.ico", "./resources/favicon.ico")
-
-	// router.GET("/", func(c *gin.Context) {
-
-	// 	question := utility.GetRandomQuestion(false)
-
-	// 	c.HTML(
-	// 		// Set the HTTP status to 200 (OK)
-	// 		http.StatusOK,
-	// 		// Use the index.html template
-	// 		"index.html",
-	// 		// Pass the data that the page uses (in this case, 'title')
-	// 		gin.H{
-	// 			"question": question,
-	// 		},
-	// 	)
-
-	// 	// response := fmt.Sprintf("")
-
-	// 	// c.String(http.StatusOK, question)
-	// })
-
+	router.Use(static.Serve("/", static.LocalFile("./ui/dist", false)))
 	v1 := router.Group("/api/v1")
 	{
 		v1.GET("/question", s.QuestionController.GetAllQuestions)
