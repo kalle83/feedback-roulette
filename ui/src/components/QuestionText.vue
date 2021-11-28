@@ -6,7 +6,7 @@
           <v-carousel-item v-for="question in questionList" :key="question.id">
             <v-sheet :color="question.color" height="100%" tile>
               <v-row class="fill-height" align="center" justify="center">
-                <div class="text-h2 white--text">{{ question.text }}</div>
+                <div class="text-h2 white--text text-center px-12">{{ question.text }}</div>
               </v-row>
             </v-sheet>
           </v-carousel-item>
@@ -72,7 +72,7 @@ export default {
   },
   mounted() {
     axios
-      .get("http://localhost/api/v1/question")
+      .get("/api/v1/question")
       .then((res) => {
         this.questions = res.data;
         console.log(this.questions.length + " Question loaded");
