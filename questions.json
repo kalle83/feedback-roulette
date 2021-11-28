@@ -22,5 +22,9 @@
 	{
 		"id": 6,
 		"Text": "Das wünsche ich mir für die Zukunft"
+	},
+	{
+		"id": 7,
+		"Text": "Wie bewertest du das Meeting auf einer Skala von 1-10 (10=Gut) und warum?"
 	}
 ]
