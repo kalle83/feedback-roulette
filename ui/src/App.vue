@@ -19,6 +19,10 @@ export default {
     Content,
     Footer,
   },
+  created (){
+    console.log("App Created")
+    this.$store.dispatch("loadQuestions")
+  }
 };
 </script>
 

@@ -1,12 +1,14 @@
 <template>
   <v-container>
     <v-row justify="center">
-      <v-col >
+      <v-col>
         <v-carousel v-model="model">
           <v-carousel-item v-for="question in questionList" :key="question.id">
             <v-sheet :color="question.color" height="100%" tile>
               <v-row class="fill-height" align="center" justify="center">
-                <div class="text-h2 white--text text-center px-12">{{ question.text }}</div>
+                <div class="text-h2 white--text text-center px-12">
+                  {{ question.text }}
+                </div>
               </v-row>
             </v-sheet>
           </v-carousel-item>
@@ -19,7 +21,7 @@
           v-model="members"
           class="align-self-stretch"
           min="3"
-          max="10"
+          max="15"
           ticks="always"
           tick-size="4"
           step="1"
@@ -33,6 +35,7 @@
               single-line
               type="number"
               style="width: 60px"
+              dark
             ></v-text-field> </template
         ></v-slider>
       </v-col>
@@ -41,11 +44,12 @@
 </template>
 
 <script>
-import axios from "axios";
+import { mapState } from 'vuex'
 
 export default {
   name: "QuestionText",
   computed: {
+    ...mapState(["questions", "isLoading"]),
     questionList: function () {
       var list = [{ text: "Feedback-Carousel", color: "red" }];
       if (this.questions.length > 0) {
@@ -64,22 +68,11 @@ export default {
   },
   data() {
     return {
-      questions: [],
+      
       model: 0,
       members: 6,
       colors: ["primary", "secondary", "yellow darken-2", "red", "orange"],
     };
-  },
-  mounted() {
-    axios
-      .get("http://localhost/api/v1/question")
-      .then((res) => {
-        this.questions = res.data;
-        console.log(this.questions.length + " Question loaded");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
   },
 };
 </script>
