@@ -1,23 +1,30 @@
 <template>
   <v-app>
-    <v-app-bar color="deep-purple" dark app>
-      <v-app-bar-title>Feedback Carousel</v-app-bar-title>
-      <v-spacer/>
-    </v-app-bar>
-    <v-main class="pt-20">
-      <Question />
-    </v-main>
+    <Navigation />
+    <Content class="mt-4" />
+    <Footer />
   </v-app>
 </template>
 
 <script>
-import Question from "./components/QuestionText";
+import Navigation from "./components/Navigation.vue";
+import Footer from "./components/Footer.vue";
+import Content from "./components/Content.vue";
 
 export default {
   name: "App",
 
   components: {
-    Question,
+    Navigation,
+    Content,
+    Footer,
   },
 };
 </script>
+
+<style scoped>
+#app {
+  background: url("@/assets/background.jpg");
+  background-size: cover;
+}
+</style>
