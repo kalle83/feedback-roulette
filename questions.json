@@ -26,5 +26,49 @@
 	{
 		"id": 7,
 		"Text": "Wie bewertest du das Meeting auf einer Skala von 1-10 (10=Gut) und warum?"
+	},
+	{
+		"id": 8,
+		"Text": "Was hat mich im heutigen Termin überrascht?"
+	},
+	{
+		"id": 9,
+		"Text": "Was hat mich im heutigen Termin begeistert?"
+	},
+	{
+		"id": 10,
+		"Text": "Wie ist es mir im heutigen Termin ergangen?"
+	},
+	{
+		"id": 11,
+		"Text": "Wenn deine Stimmung das Wetter wäre, wie sähe es gerade aus?"
+	},
+	{
+		"id": 12,
+		"Text": "Wenn du etwas an den Treffen verändern könntest, was wäre es?"
+	},
+	{
+		"id": 13,
+		"Text": "Was wirst du später anderen über dieses Meeting?"
+	},
+	{
+		"id": 14,
+		"Text": "Was hast du im heutigen Termin genossen?"
+	},
+	{
+		"id": 15,
+		"Text": "Heute waren wir als Team erfolgreich, weil…"
+	},
+	{
+		"id": 16,
+		"Text": "Teile eine Auswirkung, die dieses Treffen für dich haben wird."
+	},
+	{
+		"id": 17,
+		"Text": "Wie würdest du einem 6-jährigen Kind erklären, was wir hier gemacht haben?"
+	},
+	{
+		"id": 18,
+		"Text": "Wie hat sich das Energie-Level während des Treffens heute verändert?"
 	}
 ]
