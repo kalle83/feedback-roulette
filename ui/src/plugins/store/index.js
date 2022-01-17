@@ -34,7 +34,7 @@ export default new Vuex.Store({
         context.commit("START_LOADING")
         console.time("LOAD-QUESTIONS")
         axios({
-          baseURL: context.state.apiEndpoint,
+          // baseURL: context.state.apiEndpoint,
           url: '/api/v1/question',
           method: 'GET'
         }).then((response) => {
